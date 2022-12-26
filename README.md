@@ -1,2 +1,5 @@
 # react-atomic
-Created with CodeSandbox
+
+## Reactサンプルプロジェクト
+
+Atomicデザインにてフォルダ構築.
