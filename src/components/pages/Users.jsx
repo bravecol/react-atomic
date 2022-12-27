@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserProviders";
+import { userState } from "../../store/userState";
+import { useRecoilState } from 'recoil';
 import { SecondaryButton } from "../atoms/button/SecondaryButton";
 import { SearchInput } from "../molucules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
@@ -18,7 +18,9 @@ const users = [...Array(10).keys()].map((num) => {
 });
 
 export const Users = () => {
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  // const { userInfo, setUserInfo } = useContext(UserContext);
+
+  const [userInfo, setUserInfo] = useRecoilState(userState);
 
   const onClickSwitch = () => setUserInfo({ isAdmin: !userInfo.isAdmin });
   return (
@@ -26,11 +28,11 @@ export const Users = () => {
       <h2>ユーザー一覧</h2>
       <SearchInput />
       <br />
-      <SecondaryButton onClick={onClickSwitch}>切り替え</SecondaryButton>
+      <SecondaryButton onClick={ onClickSwitch }>切り替え</SecondaryButton>
       <SUserArea>
-        {users.map((user) => (
-          <UserCard key={user.id} user={user} />
-        ))}
+        { users.map((user) => (
+          <UserCard key={ user.id } user={ user } />
+        )) }
       </SUserArea>
     </SContainer>
   );

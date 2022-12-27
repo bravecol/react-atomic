@@ -1,19 +1,22 @@
 import { memo, useContext } from "react";
 import styled from "@emotion/styled";
 import { UserContext } from "../../../providers/UserProviders";
+import { useRecoilValue } from 'recoil';
+import { userState } from "../../../store/userState";
 
 export const UserIconWithName = memo((props) => {
   console.log("レンダリングチェック:UserIconWithName");
   const { image, name } = props;
-  const { userInfo } = useContext(UserContext);
+  // const { userInfo } = useContext(UserContext);
+  const userInfo = useRecoilValue(userState);
 
   const isAdmin = userInfo ? userInfo.isAdmin : false;
 
   return (
     <SContainer>
-      <SImg height={160} src={image} alt={name} />
-      <SName>{name}</SName>
-      {isAdmin && <SEdit>編集</SEdit>}
+      <SImg height={ 160 } src={ image } alt={ name } />
+      <SName>{ name }</SName>
+      { isAdmin && <SEdit>編集</SEdit> }
     </SContainer>
   );
 });
