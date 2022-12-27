@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { SecondaryButton } from "../atoms/button/SecondaryButton";
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserProviders";
+// import { useContext } from "react";
+// import { UserContext } from "../../providers/UserProviders";
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../store/userState";
 
@@ -19,6 +19,9 @@ export const Top = () => {
     setUserInfo({ isAdmin: false });
     navigate("/users");
   };
+  const onClickApi = () => {
+    navigate("/api");
+  };
 
   return (
     <SContainer>
@@ -27,6 +30,9 @@ export const Top = () => {
       <br />
       <br />
       <SecondaryButton onClick={ onClickGeneral }>一般用</SecondaryButton>
+      <br />
+      <br />
+      <SecondaryButton onClick={ onClickApi }>API通信テスト</SecondaryButton>
     </SContainer>
   );
 };

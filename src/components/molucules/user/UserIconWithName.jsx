@@ -1,6 +1,6 @@
-import { memo, useContext } from "react";
+import { memo } from "react";
 import styled from "@emotion/styled";
-import { UserContext } from "../../../providers/UserProviders";
+// import { UserContext } from "../../../providers/UserProviders";
 import { useRecoilValue } from 'recoil';
 import { userState } from "../../../store/userState";
 
